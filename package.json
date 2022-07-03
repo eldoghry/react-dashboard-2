@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@material-ui/icons": "^4.11.3",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.8.6",
     "@syncfusion/ej2": "^20.2.36",
     "@syncfusion/ej2-react-calendars": "^20.2.36",
     "@syncfusion/ej2-react-charts": "^20.2.36",
