@@ -26,7 +26,9 @@ import {
 import { Navbar, Footer, Sidebar } from "./components";
 
 function App() {
-  const activeMenu = true;
+  const activeMenu = 
+  
+  ;
 
   return (
     <div>
@@ -37,7 +39,7 @@ function App() {
               <IconButton
                 onClick={() => {}}
                 className="text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray"
-                // style={{ background: "blue" }}
+                style={{ background: "blue" }}
               >
                 <SettingsOutlinedIcon />
               </IconButton>
@@ -46,7 +48,7 @@ function App() {
 
           <div
             className={`sidebar bg-white dark:bg-secondary-dark-bg  ${
-              activeMenu ? "w-72 fixed" : "w-0 hidden"
+              activeMenu ? "w-72 fixed" : "w-0"
             }`}
           >
             <Sidebar />
