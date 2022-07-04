@@ -4,12 +4,15 @@ import { Link, NavLink } from "react-router-dom";
 import { BiAtom, BiX } from "react-icons/bi";
 import { IconButton, Tooltip } from "@mui/material";
 import { useState } from "react";
-
-
+import { useStateContext } from "./../contexts/ContextProvider";
 
 const Sidebar = () => {
-  const [activeMenu, setActiveMenu] = useState(true);
-  const [isActive, setIsActive] = useState(true);
+  const { activeMenu, setActiveMenu, currentColor } = useStateContext();
+
+  console.log(currentColor);
+  const normalLink = `flex items-center gap-5 pl-4 pt-3 pb-2.5 text-sm rounded-lg text-gray-700 hover:bg-light-gray`;
+
+  const activeLink = `flex items-center gap-5 pl-4 pt-3 pb-2.5 font-semibold text-white rounded-lg`;
 
   return (
     <div className="h-screen ml-3 overflow-auto">
@@ -46,7 +49,15 @@ const Sidebar = () => {
                   <NavLink
                     to={link.name}
                     key={link.name}
-                    className="flex items-center gap-5 pl-4 pt-3 pb-2.5 text-sm rounded-lg text-gray-700 hover:bg-light-gray"
+                    style={({ isActive }) => {
+                      return {
+
+                        background: isActive ? currentColor : ""
+                      }
+                    }}
+                    className={({ isActive }) =>
+                      isActive ? activeLink : normalLink
+                    }
                   >
                     {link.icon}
                     <span className="capitalize">{link.name}</span>

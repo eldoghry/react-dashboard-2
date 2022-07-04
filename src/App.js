@@ -23,12 +23,13 @@ import {
   Stacked,
 } from "./pages";
 
-import { Navbar, Footer, Sidebar } from "./components";
+import { Navbar, Footer, Sidebar, ThemeSettings } from "./components";
+
+import { useStateContext } from "./contexts/ContextProvider";
 
 function App() {
-  const activeMenu = 
-  
-  ;
+  const { activeMenu, themeSettingMenu, activeThemeSettingMenu, currentColor } =
+    useStateContext();
 
   return (
     <div>
@@ -37,9 +38,9 @@ function App() {
           <div className="fixed right-4 bottom-4" style={{ zIndex: 1000 }}>
             <Tooltip title="Settings" placement="top">
               <IconButton
-                onClick={() => {}}
-                className="text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray"
-                style={{ background: "blue" }}
+                onClick={activeThemeSettingMenu}
+                className="text-3xl p-3 text-white hover:drop-shadow-xl hover:bg-light-gray"
+                style={{ background: currentColor }}
               >
                 <SettingsOutlinedIcon />
               </IconButton>
@@ -47,7 +48,7 @@ function App() {
           </div>
 
           <div
-            className={`sidebar bg-white dark:bg-secondary-dark-bg  ${
+            className={`sidebar bg-white dark:bg-secondary-dark-bg ${
               activeMenu ? "w-72 fixed" : "w-0"
             }`}
           >
@@ -63,7 +64,9 @@ function App() {
             <div className="fixed md:static navbar bg-main-bg dark:bg-main-dark-bg w-full">
               <Navbar />
             </div>
+
             <div className="">
+              {themeSettingMenu && <ThemeSettings />}
               <Routes>
                 {/* dashboard  */}
                 <Route path="/" element={<Dashboard />} />
